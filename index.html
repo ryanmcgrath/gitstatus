@@ -65,7 +65,7 @@
 			r = document.getElementById('github_repository'),
 			n = document.getElementById('no_of_commits'),
 			c = document.getElementById('code'),
-			x = document.getElementById('gitstat_lol');
+			b = document.getElementById('gitstat_lol');
 		
 		lulz.addEventListener('click', function() {
 			var x = parseInt(Math.random() * 100000);
@@ -84,7 +84,7 @@
 			].join('');
 			c.style.display = 'block';
 			
-			x.innerHTML = '';
+			b.innerHTML = '';
 			g.opts.github_username = u.value;
 			g.opts.github_repository = r.value;
 			g.opts.no_of_commits = n.value;
