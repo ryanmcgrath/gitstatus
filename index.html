@@ -1,0 +1,97 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+	<title>Gitstatus</title>
+	<link rel="stylesheet" type="text/css" media="screen" href="css/gitstat.css">
+</head>
+<body>
+	<h1>Gitstatus</h1>
+
+	
+	<div id="left">		
+		<!--
+			You'll notice that all of the below is not in a form. This is intentional.
+			
+			I can say with 100% absolutely certainty that nothing on this page will ever submit anywhere,
+			so there is no point to having it.
+		-->
+		
+		<p>
+			<label for="github_username">GitHub username (of the repository owner):</label>
+			<input type="text" name="github_username" value="ryanmcgrath" id="github_username">
+		</p>
+		
+		<p>
+			<label for="github_repository">GitHub Repository Name:</label>
+			<input type="text" name="github_repository" value="twython" id="github_repository">
+		</p>
+		
+		<p>
+			<label for="no_of_commits">Number of commits to show:</label>
+			<input type="text" name="no_of_commits" value="5" id="no_of_commits" maxlength="3">
+		</p>
+		
+		<p>
+			<button id="lulz">Get Your Code</button>
+		</p>
+		
+		<textarea id="code"></textarea>
+	</div>
+	
+	<div id="right">
+		<div id="gitstat_lol"></div>
+		<script type="text/javascript" src="js/gitstatus.js"></script>
+		<script type="text/javascript">
+			var g = new GitStatus({
+				id: 'gitstat_lol',
+				github_username: 'ryanmcgrath',
+				github_repository: 'twython',
+				no_of_commits: 5
+			}).show();
+		</script>
+	</div>
+	
+	<div id="footer">
+		GitStatus was developed by <a href="http://venodesigns.net/" title="Ryan McGrath">Ryan McGrath</a>. 
+		You can <a href="http://twitter.com/ryanmcgrath" title="Follow Ryan on Twitter" target="_blank">follow him on Twitter</a> or
+		<a href="http://github.com/ryanmcgrath" title="Follow Ryan on Github" target="_blank">follow him on GitHub</a>.
+		This site and/or widget is in no way affiliated with or endorsed by <a href="http://github.com/" title="GitHub" target="_blank">GitHub</a>. This site will not work (well) in IE, but the widget should.
+	</div>
+	
+	<script type="text/javascript">
+		var lulz = document.getElementById('lulz'),
+			u = document.getElementById('github_username'),
+			r = document.getElementById('github_repository'),
+			n = document.getElementById('no_of_commits'),
+			c = document.getElementById('code'),
+			x = document.getElementById('gitstat_lol');
+		
+		lulz.addEventListener('click', function() {
+			var x = parseInt(Math.random() * 100000);
+			c.innerHTML = [
+				'&lt;div id="gitstatus_' + x + '"&gt;&lt;/div&gt;\n',
+				'&lt;script type="text/javascript" src=""&gt;&lt;/script&gt;\n',
+				'&lt;script type="text/javascript"&gt;\n',
+				'new GitStatus({\n',
+					'    id: "gitstatus_' + x + '",\n',
+					'    github_username: "' + u.value + '",\n',
+					'    github_repository: "' + r.value + '",\n',
+					'    no_of_commits: ' + n.value + ',\n',
+					'    //disable_all_styles: true\n',
+				'}).show();\n',
+				'&lt;/script&gt;\n'
+			].join('');
+			c.style.display = 'block';
+			
+			x.innerHTML = '';
+			g.opts.github_username = u.value;
+			g.opts.github_repository = r.value;
+			g.opts.no_of_commits = n.value;
+			g.show();
+			
+			return false;
+		}, false);
+	</script>
+</body>
+</html>
