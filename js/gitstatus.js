@@ -287,7 +287,7 @@
 		 *	Luckily, all our JSON-P methods operate in a callback-based scenario! See why we did that? ;D
 		 */
 		show: function() {
-			this.api_base_url += '/' + this.opts.github_username + '/' + this.opts.github_repository + '/';
+			this.api_base_url = this.api_base_url '/' + this.opts.github_username + '/' + this.opts.github_repository + '/';
 			GitStatus.util.jsonp(this.api_base_url + 'network_meta', this._getRepoNetworkData, this);
 			return this;
 		},
