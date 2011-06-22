@@ -220,7 +220,8 @@
 		 */
 		opts: null,
 		node: null,
-		api_base_url: 'https://github.com',
+		api_base: 'https://github.com',
+		api_base_url: '',
 		
 		/**
 		 *	Some people choose to do their templating in various ways, be it Mustache/etc. Some also choose to do the line-ending trick
@@ -287,7 +288,7 @@
 		 *	Luckily, all our JSON-P methods operate in a callback-based scenario! See why we did that? ;D
 		 */
 		show: function() {
-			this.api_base_url = this.api_base_url + '/' + this.opts.github_username + '/' + this.opts.github_repository + '/';
+			this.api_base_url = this.api_base '/' + this.opts.github_username + '/' + this.opts.github_repository + '/';
 			GitStatus.util.jsonp(this.api_base_url + 'network_meta', this._getRepoNetworkData, this);
 			return this;
 		},
