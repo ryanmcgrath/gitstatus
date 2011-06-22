@@ -204,7 +204,7 @@
 		 *	@returns String, parsed/replaced template.
 		 */
 		render: function(template, context) {
-			for(x in context) template = template.replace(new RegExp('{{' + x + '}}', 'g'), context[x].replace(/</g, '&lt;').replace(/>/, '&gt;'));
+			for(x in context) template = template.replace(new RegExp('{{' + x + '}}', 'g'), context[x]);
 			return template;
 		}
 	};
